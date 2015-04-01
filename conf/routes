@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+OPTIONS        /*all                                    com.yetu.household.controllers.CrossOrigin.preflight(all: String)
+
+# Home page
+GET        /                                            com.yetu.household.controllers.HouseholdApi.index
+GET        /gateway                                     com.yetu.household.controllers.GatewayApi.index
+POST       /gateway/discoveries                         com.yetu.household.controllers.GatewayApi.createSession
+POST       /gateway/removals                            com.yetu.household.controllers.GatewayApi.createSession
+GET        /gateway/discoveries/:sessionId              com.yetu.household.controllers.GatewayApi.getDiscoverySession(sessionId: String)
+GET        /gateway/removals/:sessionId                 com.yetu.household.controllers.GatewayApi.getRemovalSession(sessionId: String)
+
+GET        /things                                      com.yetu.household.controllers.ThingsApi.index(itr: Boolean ?= false, istr: Boolean ?= false)
+GET        /things/:thingId                             com.yetu.household.controllers.ThingsApi.getThing(thingId: String)
+GET        /things/:thingId/subthings                   com.yetu.household.controllers.ThingsApi.getSubthings(thingId: String)
+GET        /things/:thingId/subthings/:subthingId       com.yetu.household.controllers.ThingsApi.getSubthing(thingId: String, subthingId: String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET        /assets/*file        controllers.Assets.at(path="/public", file)
